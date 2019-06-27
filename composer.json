@@ -1,0 +1,43 @@
+{
+    "name": "ext-think/encryption",
+    "description": "think encryption package.",
+    "license": "Apache-2.0",
+    "authors": [
+        {
+            "name": "wanganlin",
+            "email": "2797712@qq.com"
+        }
+    ],
+    "require": {
+        "php": "^7.1.3",
+        "ext-openssl": "*",
+        "topthink/framework": "^6.0.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "think\\encryption\\": "src/"
+        },
+        "files": [
+            "src/support/helper.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "think\\test\\encryption\\": "tests/"
+        }
+    },
+    "extra": {
+        "think": {
+            "services": [
+                "think\\encryption\\EncryptionService"
+            ],
+            "config": {
+                "crypt": "src/config/crypt.php"
+            }
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "dev"
+}
