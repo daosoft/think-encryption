@@ -24,11 +24,6 @@
       "src/helper.php"
     ]
   },
-  "autoload-dev": {
-    "psr-4": {
-      "think\\test\\encryption\\": "tests/"
-    }
-  },
   "extra": {
     "think": {
       "services": [
