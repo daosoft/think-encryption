@@ -1,14 +1,4 @@
-<?php
-// +----------------------------------------------------------------------
-// | ThinkPHP [ WE CAN DO IT JUST THINK ]
-// +----------------------------------------------------------------------
-// | Copyright (c) 2006~2019 http://thinkphp.cn All rights reserved.
-// +----------------------------------------------------------------------
-// | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
-// +----------------------------------------------------------------------
-// | Author: wanganlin <2797712@qq.com>
-// +----------------------------------------------------------------------
-declare (strict_types = 1);
+<?php declare (strict_types=1);
 
 namespace think\encryption;
 
@@ -40,7 +30,7 @@ class Encrypter implements EncrypterInterface
      * @param string $key 加密密钥
      * @param string $cipher 加密算法
      * @return void
-     * @throws RuntimeException
+     * @throws \Exception
      */
     public function __construct($key, $cipher = 'AES-128-CBC')
     {
@@ -63,6 +53,7 @@ class Encrypter implements EncrypterInterface
     public static function supported($key, $cipher)
     {
         $length = mb_strlen($key, '8bit');
+
         return ($cipher === 'AES-128-CBC' && $length === 16) ||
             ($cipher === 'AES-256-CBC' && $length === 32);
     }
@@ -72,6 +63,7 @@ class Encrypter implements EncrypterInterface
      *
      * @param string $cipher 加密算法
      * @return string
+     * @throws \Exception
      */
     public static function generateKey($cipher)
     {
@@ -84,7 +76,7 @@ class Encrypter implements EncrypterInterface
      * @param mixed $value 待加密的数据
      * @param bool $serialize 是否序列化
      * @return string
-     * @throws EncryptException
+     * @throws \Exception
      */
     public function encrypt($value, $serialize = true)
     {
@@ -97,7 +89,7 @@ class Encrypter implements EncrypterInterface
         );
 
         if ($value === false) {
-            throw new EncryptException('无法加密数据');
+            throw new RuntimeException('无法加密数据');
         }
 
         // 对向量进行base64_encode，并为加密值创建MAC，以便验证其真实性。
@@ -106,7 +98,7 @@ class Encrypter implements EncrypterInterface
         $json = json_encode(compact('iv', 'value', 'mac'));
 
         if (json_last_error() !== JSON_ERROR_NONE) {
-            throw new EncryptException('无法加密数据');
+            throw new RuntimeException('无法加密数据');
         }
 
         return base64_encode($json);
@@ -117,7 +109,7 @@ class Encrypter implements EncrypterInterface
      *
      * @param string $value 待加密字符串
      * @return string
-     * @throws EncryptException
+     * @throws \Exception
      */
     public function encryptString($value)
     {
@@ -129,8 +121,8 @@ class Encrypter implements EncrypterInterface
      *
      * @param string $payload 加密的数据
      * @param bool $unserialize 是否反序列化
-     * @return mixed
-     * @throws DecryptException
+     * @return mixed|string
+     * @throws \Exception
      */
     public function decrypt($payload, $unserialize = true)
     {
@@ -143,7 +135,7 @@ class Encrypter implements EncrypterInterface
         );
 
         if ($decrypted === false) {
-            throw new DecryptException('Could not decrypt the data.');
+            throw new RuntimeException('Could not decrypt the data.');
         }
 
         return $unserialize ? unserialize($decrypted) : $decrypted;
@@ -153,8 +145,8 @@ class Encrypter implements EncrypterInterface
      * 解密给定字符串而不进行反序列化
      *
      * @param string $payload 加密的字符串
-     * @return string
-     * @throws DecryptException
+     * @return mixed|string
+     * @throws \Exception
      */
     public function decryptString($payload)
     {
@@ -178,18 +170,18 @@ class Encrypter implements EncrypterInterface
      *
      * @param string $payload
      * @return array
-     * @throws DecryptException
+     * @throws \Exception
      */
     protected function getJsonPayload($payload)
     {
         $payload = json_decode(base64_decode($payload), true);
 
         if (!$this->validPayload($payload)) {
-            throw new DecryptException('The payload is invalid.');
+            throw new RuntimeException('The payload is invalid.');
         }
 
         if (!$this->validMac($payload)) {
-            throw new DecryptException('The MAC is invalid.');
+            throw new RuntimeException('The MAC is invalid.');
         }
 
         return $payload;
@@ -212,10 +204,12 @@ class Encrypter implements EncrypterInterface
      *
      * @param array $payload
      * @return bool
+     * @throws \Exception
      */
     protected function validMac(array $payload)
     {
         $calculated = $this->calculateMac($payload, $bytes = random_bytes(16));
+
         return hash_equals(
             hash_hmac('sha256', $payload['mac'], $bytes, true), $calculated
         );

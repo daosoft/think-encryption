@@ -1,14 +1,4 @@
-<?php
-// +----------------------------------------------------------------------
-// | ThinkPHP [ WE CAN DO IT JUST THINK ]
-// +----------------------------------------------------------------------
-// | Copyright (c) 2006~2015 http://thinkphp.cn All rights reserved.
-// +----------------------------------------------------------------------
-// | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
-// +----------------------------------------------------------------------
-// | Author: wanganlin <2797712@qq.com>
-// +----------------------------------------------------------------------
-declare (strict_types = 1);
+<?php declare (strict_types=1);
 
 namespace think\encryption\command;
 
@@ -42,6 +32,7 @@ class KeyGenerate extends Command
      * 生成随机密钥
      *
      * @return string
+     * @throws \Exception
      */
     protected function generateRandomKey()
     {

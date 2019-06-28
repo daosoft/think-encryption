@@ -8,7 +8,7 @@
 // +----------------------------------------------------------------------
 // | Author: wanganlin <2797712@qq.com>
 // +----------------------------------------------------------------------
-declare (strict_types = 1);
+declare (strict_types=1);
 
 namespace think\encryption;
 
@@ -25,7 +25,7 @@ interface EncrypterInterface
      * @param bool $serialize 是否序列化
      * @return string
      */
-    public function encrypt($value, $serialize = true): string;
+    public function encrypt($value, $serialize = true);
 
     /**
      * 解密

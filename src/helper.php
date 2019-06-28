@@ -1,38 +1,31 @@
 <?php
-// +----------------------------------------------------------------------
-// | ThinkPHP [ WE CAN DO IT JUST THINK ]
-// +----------------------------------------------------------------------
-// | Copyright (c) 2006-2019 http://thinkphp.cn All rights reserved.
-// +----------------------------------------------------------------------
-// | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
-// +----------------------------------------------------------------------
-// | Author: wanganlin <2797712@qq.com>
-// +----------------------------------------------------------------------
+
+use think\encryption\facade\Crypt;
 
 if (!function_exists('decrypt')) {
     /**
-     * ½âÃÜ¸ø¶¨µÄÖµ
+     * è§£å¯†ç»™å®šçš„å€¼
      *
-     * @param string $value ´ý½âÃÜµÄÊý¾Ý
-     * @param bool $unserialize ÊÇ·ñÐèÒª·´ÐòÁÐ»¯
+     * @param string $value å¾…è§£å¯†çš„æ•°æ®
+     * @param bool $unserialize æ˜¯å¦éœ€è¦ååºåˆ—åŒ–
      * @return mixed
      */
     function decrypt($value, $unserialize = true)
     {
-        return app('encrypter')->decrypt($value, $unserialize);
+        return Crypt::decrypt($value, $unserialize);
     }
 }
 
 if (!function_exists('encrypt')) {
     /**
-     * ¼ÓÃÜ¸ø¶¨µÄÖµ
+     * åŠ å¯†ç»™å®šçš„å€¼
      *
-     * @param mixed $value ´ý¼ÓÃÜµÄÊý¾Ý
-     * @param bool $serialize ÊÇ·ñÐèÒªÐòÁÐ»¯
+     * @param mixed $value å¾…åŠ å¯†çš„æ•°æ®
+     * @param bool $serialize æ˜¯å¦éœ€è¦åºåˆ—åŒ–
      * @return string
      */
     function encrypt($value, $serialize = true)
     {
-        return app('encrypter')->encrypt($value, $serialize);
+        return Crypt::encrypt($value, $serialize);
     }
 }
