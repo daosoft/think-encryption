@@ -1,6 +1,6 @@
 <?php declare (strict_types=1);
 
-namespace lantern\encryption;
+namespace think\lantern\encryption;
 
 /**
  * 加密解密驱动接口

@@ -1,10 +1,10 @@
 <?php declare (strict_types=1);
 
-namespace lantern\encryption;
+namespace think\lantern\encryption;
 
-use lantern\encryption\command\KeyGenerate;
 use RuntimeException;
 use think\helper\Str;
+use think\lantern\encryption\command\KeyGenerate;
 use think\Service;
 
 class EncryptionService extends Service

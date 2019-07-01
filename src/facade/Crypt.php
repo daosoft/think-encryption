@@ -1,6 +1,6 @@
 <?php declare (strict_types=1);
 
-namespace lantern\encryption\facade;
+namespace think\lantern\encryption\facade;
 
 use think\Facade;
 
@@ -13,7 +13,7 @@ use think\Facade;
  * @method static string decryptString(string $payload)
  * @method static string getKey()
  *
- * @see \lantern\encryption\Encrypter
+ * @see \think\lantern\encryption\Encrypter
  */
 class Crypt extends Facade
 {

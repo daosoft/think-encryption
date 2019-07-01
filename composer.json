@@ -18,7 +18,7 @@
   },
   "autoload": {
     "psr-4": {
-      "lantern\\encryption\\": "src/"
+      "think\\lantern\\encryption\\": "src/"
     },
     "files": [
       "src/helper.php"
@@ -27,7 +27,7 @@
   "extra": {
     "think": {
       "services": [
-        "lantern\\encryption\\EncryptionService"
+        "think\\lantern\\encryption\\EncryptionService"
       ],
       "config": {
         "crypt": "src/config.php"
