@@ -16,6 +16,9 @@
     "topthink/framework": "^6.0.0",
     "topthink/think-helper": "^3.0.3"
   },
+  "require-dev": {
+    "phpunit/phpunit": "^7.5|^8.0"
+  },
   "autoload": {
     "psr-4": {
       "think\\support\\encryption\\": "src/"
@@ -23,6 +26,11 @@
     "files": [
       "src/helper.php"
     ]
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "think\\support\\tests\\": "tests/"
+    }
   },
   "extra": {
     "think": {
@@ -37,5 +45,6 @@
   "config": {
     "sort-packages": true
   },
-  "minimum-stability": "dev"
+  "minimum-stability": "dev",
+  "prefer-stable": true
 }
