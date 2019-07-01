@@ -71,16 +71,18 @@ class KeyGenerate extends Command
         $envFilePath = app()->getRootPath() . '.env';
 
         if (file_exists($envFilePath)) {
-            file_put_contents($envFilePath, preg_replace(
-                $this->keyReplacementPattern(),
-                'APP_KEY=' . $key,
-                file_get_contents($envFilePath)
-            ));
-        }
+            $envContents = file_get_contents($envFilePath);
 
-        throw new RuntimeException(
-            '未找到环境变量文件'
-        );
+            if (strpos($envContents, 'APP_KEY') !== false) {
+                file_put_contents($envFilePath, preg_replace(
+                    $this->keyReplacementPattern(),
+                    "APP_KEY = '{$key}'",
+                    $envContents
+                ));
+            } else {
+                file_put_contents($envFilePath, "APP_KEY = '{$key}'\n" . $envContents);
+            }
+        }
     }
 
     /**
@@ -90,8 +92,6 @@ class KeyGenerate extends Command
      */
     protected function keyReplacementPattern()
     {
-        $escaped = preg_quote('=' . $this->app->config->get('crypt.key'), '/');
-
-        return "/^APP_KEY{$escaped}/m";
+        return "/^APP_KEY.+/m";
     }
 }
