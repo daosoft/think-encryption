@@ -47,7 +47,7 @@ class UserController
 加密过程中，加密的值 serialize 序列化后传递，允许加密对象和数组。因此，接收加密值的非 PHP 客户端需要对数据进行 unserialize 反序列化。如果想要在不序列化的情况下加密解密值，你可以使用 Crypt Facade 的 encryptString 和 decryptString 方法：
 
 ```
-use think\encryption\facade\Crypt;
+use lantern\encryption\facade\Crypt;
 
 $encrypted = Crypt::encryptString('Hello world.');
 

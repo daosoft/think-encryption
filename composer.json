@@ -9,15 +9,16 @@
     }
   ],
   "require": {
+    "php": "^7.1.3",
     "ext-json": "*",
     "ext-mbstring": "*",
     "ext-openssl": "*",
-    "topthink/framework": "^6.0",
-    "topthink/think-helper": "^3.0"
+    "topthink/framework": "6.0.*",
+    "topthink/think-helper": "^3.0.3"
   },
   "autoload": {
     "psr-4": {
-      "think\\encryption\\": "src/"
+      "lantern\\encryption\\": "src/"
     },
     "files": [
       "src/helper.php"
@@ -26,7 +27,7 @@
   "extra": {
     "think": {
       "services": [
-        "think\\encryption\\EncryptionService"
+        "lantern\\encryption\\EncryptionService"
       ],
       "config": {
         "crypt": "src/config.php"

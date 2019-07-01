@@ -1,20 +1,10 @@
-<?php
-// +----------------------------------------------------------------------
-// | ThinkPHP [ WE CAN DO IT JUST THINK IT ]
-// +----------------------------------------------------------------------
-// | Copyright (c) 2006-2016 http://thinkphp.cn All rights reserved.
-// +----------------------------------------------------------------------
-// | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
-// +----------------------------------------------------------------------
-// | Author: wanganlin <2797712@qq.com>
-// +----------------------------------------------------------------------
-declare (strict_types=1);
+<?php declare (strict_types=1);
 
-namespace think\encryption;
+namespace lantern\encryption;
 
 /**
  * 加密解密驱动接口
- * @package think\encryption
+ * @package lantern\encryption
  */
 interface EncrypterInterface
 {

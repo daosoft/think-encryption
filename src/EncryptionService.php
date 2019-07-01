@@ -1,9 +1,9 @@
 <?php declare (strict_types=1);
 
-namespace think\encryption;
+namespace lantern\encryption;
 
+use lantern\encryption\command\KeyGenerate;
 use RuntimeException;
-use think\encryption\command\KeyGenerate;
 use think\helper\Str;
 use think\Service;
 
