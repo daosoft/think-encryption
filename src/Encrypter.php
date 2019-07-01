@@ -1,12 +1,12 @@
 <?php declare (strict_types=1);
 
-namespace think\lantern\encryption;
+namespace think\support\encryption;
 
 use RuntimeException;
 
 /**
  * 加密解密类
- * @package think\lantern\encryption
+ * @package think\support\encryption
  */
 class Encrypter implements EncrypterInterface
 {

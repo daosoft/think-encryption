@@ -1,10 +1,10 @@
 <?php declare (strict_types=1);
 
-namespace think\lantern\encryption;
+namespace think\support\encryption;
 
 /**
  * 加密解密驱动接口
- * @package lantern\encryption
+ * @package support\encryption
  */
 interface EncrypterInterface
 {

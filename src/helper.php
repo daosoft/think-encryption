@@ -1,6 +1,6 @@
 <?php
 
-use think\lantern\encryption\facade\Crypt;
+use think\support\encryption\facade\Crypt;
 
 if (!function_exists('decrypt')) {
     /**

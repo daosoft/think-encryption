@@ -1,11 +1,11 @@
 <?php declare (strict_types=1);
 
-namespace think\lantern\encryption\command;
+namespace think\support\encryption\command;
 
 use think\console\Command;
 use think\console\Input;
 use think\console\Output;
-use think\lantern\encryption\Encrypter;
+use think\support\encryption\Encrypter;
 
 class KeyGenerate extends Command
 {

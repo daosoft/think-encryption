@@ -1,11 +1,11 @@
 <?php declare (strict_types=1);
 
-namespace think\lantern\encryption;
+namespace think\support\encryption;
 
 use RuntimeException;
 use think\helper\Str;
-use think\lantern\encryption\command\KeyGenerate;
 use think\Service;
+use think\support\encryption\command\KeyGenerate;
 
 class EncryptionService extends Service
 {
