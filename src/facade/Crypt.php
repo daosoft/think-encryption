@@ -2,7 +2,6 @@
 
 namespace lantern\encryption\facade;
 
-use lantern\encryption\Encrypter;
 use think\Facade;
 
 /**
@@ -20,6 +19,6 @@ class Crypt extends Facade
 {
     protected static function getFacadeClass()
     {
-        return Encrypter::class;
+        return 'encrypter';
     }
 }

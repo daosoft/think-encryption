@@ -3,7 +3,6 @@
 namespace lantern\encryption\command;
 
 use lantern\encryption\Encrypter;
-use RuntimeException;
 use think\console\Command;
 use think\console\Input;
 use think\console\Output;
