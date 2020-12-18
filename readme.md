@@ -8,7 +8,7 @@ ThinkPHP 的加密机制使用的是 OpenSSL 所提供的 AES-256 和 AES-128 �
 使用 Composer 安装
 
 ```
-composer require ext-think/encryption -vvv
+composer require daosoft/think-encryption -vvv
 ```
 
 ## 配置
